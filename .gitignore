@@ -1,0 +1,16 @@
+# Local-only skills — never push
+whetstone.md
+whetstone/
+probe.md
+probe/
+jury.md
+jury/
+bloodhound.md
+bloodhound/
+
+# Standard ignores
+.DS_Store
+*.log
+__pycache__/
+*.pyc
+.env
