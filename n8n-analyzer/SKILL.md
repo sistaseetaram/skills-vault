@@ -1,6 +1,6 @@
 ---
 name: n8n-analyzer
-description: Fetches all workflow JSON from a remote n8n instance (Railway or any hosted) via existing Python REST API client, analyzes what each workflow does, and generates a project summary report with expert AI automation review. Produces both a plain-English summary and an expert opinion on architecture quality, improvement opportunities, and best practice gaps.
+description: Fetches workflows from any n8n instance (Railway, cloud, local) via Python REST API client. Lists available workflows, lets user select which to analyze, generates a named summary report with expert AI automation review, saves locally and uploads to Google Drive.
 triggers:
   - "analyze my workflows"
   - "what workflows do I have"
@@ -15,96 +15,155 @@ triggers:
 
 # N8N Analyzer Skill
 
-Fetch all workflows from the remote n8n instance (Railway) → analyze what each does → produce a project summary with expert AI automation review.
+Fetch workflows from any n8n instance → let user select which to analyze → produce named summary report with expert review → save locally + upload to Google Drive.
 
-**Tool used:** Python scripts in `tools/analyzer/` via n8n REST API. Connects to any hosted instance — Railway, self-hosted, cloud.
+**Tool used:** Python scripts in `tools/analyzer/` via n8n REST API.
 
 ---
 
-## Step 1: Verify Environment
+## Step 1: Instance Selection
 
-Check credentials are set:
+Check if current project `.env` has credentials:
 
 ```bash
-cd /Users/sistaseetaram/Desktop/Claude/claude_projects/n8nAutomationAndSkills
-cat .env 2>/dev/null | grep -E "N8N_BASE_URL|N8N_API_KEY" | sed 's/=.*/=<set>/'
+cat /Users/sistaseetaram/Desktop/Claude/claude_projects/n8nAutomationAndSkills/.env 2>/dev/null | grep -E "N8N_BASE_URL|N8N_API_KEY" | sed 's/=.*/=<set>/'
 ```
 
-Required env vars in `.env`:
-- `N8N_BASE_URL` — Railway URL (e.g. `https://your-app.railway.app`)
-- `N8N_API_KEY` — from n8n Settings → API Keys
+Present to user:
+> "Instance found: `<N8N_BASE_URL value>`. Use this instance, or provide a different URL + API key?"
 
-If missing, stop and ask user to set them in `.env` before continuing.
+Also ask:
+> "What should I call this instance? (used in filename — e.g. `railway`, `cloud_nation`, `rapid_api`)"
+
+If user provides a different URL + API key for this session:
+- Set `N8N_BASE_URL` and `N8N_API_KEY` as env vars inline for the Python commands — do NOT write them to `.env` or display them in chat
+- Use instance name as provided by user
+
+**Security:** Never echo API key values in chat. Confirm only with `KEY=<set>`.
 
 ---
 
-## Step 2: Fetch All Workflows
+## Step 2: Fetch Workflow List
 
+```bash
+# CLI-first (preferred)
+n8n-cli workflow list --format=json > /tmp/workflows.json
+```
+
+Fallback (if n8n-cli unavailable or different instance):
 ```bash
 cd /Users/sistaseetaram/Desktop/Claude/claude_projects/n8nAutomationAndSkills
 python3 tools/analyzer/fetch_all_workflows.py
 ```
 
-This calls the Railway n8n REST API (`GET /api/v1/workflows`) and saves results to `.tmp/workflows.json`.
+Then display a numbered selection menu from `/tmp/workflows.json` (or `.tmp/workflows.json`):
 
-If the fetch fails (auth error, connection refused, etc.) — report the exact error and stop. Do not proceed with stale/missing data.
+```
+Workflows on <instance_name>:
+  1. [Workflow Name] — ACTIVE
+  2. [Workflow Name] — INACTIVE
+  3. [Workflow Name] — INACTIVE
+  ... (all workflows)
+
+Which would you like to analyze?
+→ Enter numbers (e.g. 1,3,5), a range (1-4), or "all"
+```
+
+Wait for user selection before proceeding. Only analyze the selected workflows.
 
 ---
 
-## Step 3: Fetch Individual Workflow Details
+## Step 3: Fetch Full Details (selected only)
 
-The summary fetch may not include full node parameters. For complete analysis, fetch each workflow individually:
+Fetch full node+parameter JSON only for selected workflows:
 
-```python
-# Run inline or as a quick script
-import json, sys, os
-sys.path.insert(0, 'tools')
-from shared.n8n_client import N8nClient
-
-client = N8nClient()
-workflows = json.load(open('.tmp/workflows.json'))
-details = []
-for wf in workflows:
-    full = client.get_workflow(wf['id'])
-    details.append(full)
-
-with open('.tmp/workflows_full.json', 'w') as f:
-    json.dump(details, f, indent=2)
-print(f"Fetched full details for {len(details)} workflows")
+```bash
+# CLI-first (preferred) — one command per selected ID
+for id in <selected_ids>; do
+  n8n-cli workflow get "$id" --format=json
+done
 ```
 
-Run via:
+Or fetch into a combined file:
+```bash
+python3 -c "
+import subprocess, json, sys
+ids = sys.argv[1:]
+details = [json.loads(subprocess.check_output(['n8n-cli','workflow','get',i,'--format=json'])) for i in ids]
+json.dump(details, open('/tmp/workflows_selected.json','w'), indent=2)
+print(f'Fetched {len(details)} workflows')
+" <id1> <id2> ...
+```
+
+Fallback (if n8n-cli unavailable):
 ```bash
 cd /Users/sistaseetaram/Desktop/Claude/claude_projects/n8nAutomationAndSkills
 python3 -c "
-import json, sys
+import json, sys, warnings, os
+warnings.filterwarnings('ignore')
 sys.path.insert(0, 'tools')
 from shared.n8n_client import N8nClient
+
 client = N8nClient()
 workflows = json.load(open('.tmp/workflows.json'))
-details = [client.get_workflow(wf['id']) for wf in workflows]
-import os; os.makedirs('.tmp', exist_ok=True)
-json.dump(details, open('.tmp/workflows_full.json','w'), indent=2)
+selected_ids = <ids from user selection>
+selected = [wf for wf in workflows if wf['id'] in selected_ids]
+details = [client.get_workflow(wf['id']) for wf in selected]
+os.makedirs('.tmp', exist_ok=True)
+json.dump(details, open('.tmp/workflows_selected.json','w'), indent=2)
 print(f'Fetched {len(details)} workflows')
 "
 ```
 
-Read `.tmp/workflows_full.json` — this is the full analysis input.
+Then extract key fields via Python (do not read raw JSON — file can exceed 256KB):
+
+```bash
+python3 -c "
+import json, warnings
+warnings.filterwarnings('ignore')
+
+details = json.load(open('.tmp/workflows_selected.json'))
+for wf in details:
+    nodes = wf.get('nodes', [])
+    node_types = list(set(
+        n.get('type','').replace('n8n-nodes-base.','').replace('@n8n/n8n-nodes-langchain.','AI:').replace('@n8n/','')
+        for n in nodes if n.get('type')
+    ))
+    connected_targets = set()
+    for src, conns in (wf.get('connections') or {}).items():
+        for output_key, output_list in (conns or {}).items():
+            for targets in (output_list or []):
+                for t in (targets or []):
+                    if isinstance(t, dict):
+                        connected_targets.add(t.get('node',''))
+    trigger_nodes = [n for n in nodes if n.get('name') and n['name'] not in connected_targets]
+    trigger_type = trigger_nodes[0].get('type','unknown').split('.')[-1] if trigger_nodes else 'unknown'
+    print(f'=== {wf.get(\"name\")} ===')
+    print(f'  Active: {wf.get(\"active\",False)}')
+    print(f'  Nodes: {len(nodes)}')
+    print(f'  Trigger: {trigger_type}')
+    print(f'  Types: {chr(44).join(sorted(node_types))}')
+    for n in nodes:
+        ntype = n.get('type','').split('.')[-1]
+        name = n.get('name','')
+        params = n.get('parameters',{})
+        key_params = {k:v for k,v in params.items() if k in ('prompt','text','subject','operation','resource','url','method','chatId','message','fromEmail','toEmail','query','systemMessage') and isinstance(v,str) and len(str(v))<120}
+        print(f'  [{ntype}] {name}' + (f' -> {key_params}' if key_params else ''))
+    print()
+"
+```
 
 ---
 
-## Step 4: Analyze Each Workflow
+## Step 4: Analyze Each Selected Workflow
 
-For each workflow object in the full JSON:
+For each workflow, extract:
+- Name + active status
+- Trigger type (`webhook`, `schedule/cron`, `manual`, `event`, `sub-workflow`)
+- Node count + unique node types (strip prefixes)
+- Data flow: trigger → transformations → output
 
-**Extract:**
-- `name` and `active` (true/false)
-- **Trigger node** — node with no incoming connections, or type containing `Trigger`, `Webhook`, `Schedule`, `Cron`, `ManualTrigger`
-- **Trigger type** — `webhook`, `schedule/cron`, `manual`, `event`, `sub-workflow`
-- **Node count** and **unique node types** (strip `n8n-nodes-base.` prefix)
-- **Data flow** — trace connection path from trigger → final output node(s)
-
-**Understand the workflow** from node names + types + parameters:
+Understand from node names + types + parameters:
 - What triggers it
 - What data it reads/fetches
 - What transformations happen
@@ -113,39 +172,35 @@ For each workflow object in the full JSON:
 
 ---
 
-## Step 5: Generate Report
+## Step 5: Generate & Save Report
 
-**Output path:** `/Users/sistaseetaram/Desktop/n8n_resources/MyCloudWorkflows/`
+**Local output path:** `/Users/sistaseetaram/Desktop/n8n_resources/MyCloudWorkflows/Railway_workflow_analysis/`
 
-Filename format: `YYYY-MM-DD_n8n-railway-analysis.md` (e.g. `2026-05-21_n8n-railway-analysis.md`)
+**Filename format:** `<instance_name>_summary_report_YYYY-MM-DD.md`
+Examples:
+- `railway_summary_report_2026-05-21.md`
+- `cloud_nation_summary_report_2026-05-21.md`
+- `rapid_api_summary_report_2026-05-21.md`
 
-Create directory if missing:
+If same filename exists, append `_v2`, `_v3`.
+
 ```bash
-mkdir -p /Users/sistaseetaram/Desktop/n8n_resources/MyCloudWorkflows
+mkdir -p /Users/sistaseetaram/Desktop/n8n_resources/MyCloudWorkflows/Railway_workflow_analysis
 ```
 
-Write the full report to that file AND display it inline. After writing:
-```bash
-echo "Report saved to /Users/sistaseetaram/Desktop/n8n_resources/MyCloudWorkflows/$(date +%Y-%m-%d)_n8n-railway-analysis.md"
-```
+Write report to file using the Write tool. Also display inline.
 
 **Report format:**
 
 ```markdown
-# N8N Project Analysis Report
-Generated: <date>
-Instance: <N8N_BASE_URL value> (Railway)
-
-## Project Overview
-- Total workflows: X
-- Active: X / Inactive: X
-- Trigger types: webhook (X), schedule (X), manual (X), event (X)
+# N8N Instance Report — <Instance Name>
+Generated: YYYY-MM-DD
+Instance URL: <masked — show domain only, not full URL with tokens>
+Workflows analyzed: X of Y total
 
 ---
 
-## Workflows
-
-### [Workflow Name] — [ACTIVE/INACTIVE]
+## [Workflow Name] — [ACTIVE/INACTIVE]
 
 **Trigger:** <type + details>
 **Nodes:** X total | Services: <node type list>
@@ -155,36 +210,90 @@ Instance: <N8N_BASE_URL value> (Railway)
 
 **Expert AI Automation Review**
 <As an AI automation expert with deep n8n experience:
-- What was done well (architecture, node choices, flow design)
+- What was done well
 - What could be improved (error handling gaps, fragile patterns, hardcoded values, missing retries)
-- Opportunities to add AI/intelligence (LLM nodes, classification, summarization, dynamic routing)
-- Best practice gaps (naming, missing documentation nodes, no monitoring, etc.)
+- Opportunities to add AI/intelligence
+- Best practice gaps
 - One concrete next-step recommendation>
 
 ---
 ```
 
-Repeat for every workflow. Then append:
+Repeat for each selected workflow. Then append:
 
 ```markdown
 ## Cross-Workflow Observations
-
-<Patterns across all workflows:
-- Common node types used
-- Shared architectural patterns or anti-patterns
-- Workflows that depend on each other
-- Overall project maturity
-- Top 3 recommendations to improve the automation stack>
+<Only if 2+ workflows analyzed:
+- Shared patterns or anti-patterns
+- Inter-workflow dependencies
+- Top 3 recommendations>
 ```
 
 ---
 
-## Step 6: Self-Update
+## Step 6: Upload to Google Drive
 
-After generating the report, append findings to **Applied Learning** below:
+After local save, upload the report to Google Drive.
 
+**Config:**
+- OAuth client secret: `/Users/sistaseetaram/Documents/credentials/Gemini_API_OAuth/client_secret_web_client_2.json`
+- Token cache: `/Users/sistaseetaram/Desktop/Claude/claude_projects/n8nAutomationAndSkills/.tmp/gdrive_token.json`
+- Drive folder ID: `10dWjCnfUkoFjznxQCzLLQkNwxCuVZiLO`
+
+```bash
+pip3 install --quiet google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
-YYYY-MM-DD | <project context> | <pattern/finding> | <future watch>
+
+```bash
+python3 -c "
+import os, sys
+sys.path.insert(0, 'tools')
+
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+
+SCOPES = ['https://www.googleapis.com/auth/drive.file']
+CREDS_FILE = '/Users/sistaseetaram/Documents/credentials/Gemini_API_OAuth/client_secret_web_client_2.json'
+TOKEN_FILE = '/Users/sistaseetaram/Desktop/Claude/claude_projects/n8nAutomationAndSkills/.tmp/gdrive_token.json'
+FOLDER_ID = '10dWjCnfUkoFjznxQCzLLQkNwxCuVZiLO'
+REPORT_PATH = sys.argv[1]
+
+creds = None
+if os.path.exists(TOKEN_FILE):
+    creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
+if not creds or not creds.valid:
+    if creds and creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+    else:
+        flow = InstalledAppFlow.from_client_secrets_file(CREDS_FILE, SCOPES)
+        creds = flow.run_local_server(port=0)
+    with open(TOKEN_FILE, 'w') as t:
+        t.write(creds.to_json())
+
+service = build('drive', 'v3', credentials=creds)
+file_metadata = {'name': os.path.basename(REPORT_PATH), 'parents': [FOLDER_ID]}
+media = MediaFileUpload(REPORT_PATH, mimetype='text/markdown')
+result = service.files().create(body=file_metadata, media_body=media, fields='id,name,webViewLink').execute()
+print(f'Uploaded: {result[\"name\"]}')
+print(f'Drive link: {result[\"webViewLink\"]}')
+" /Users/sistaseetaram/Desktop/n8n_resources/MyCloudWorkflows/Railway_workflow_analysis/<filename>.md
+```
+
+First run: browser OAuth flow opens once → token cached → all future runs silent.
+
+Confirm to user:
+> "Report saved locally and uploaded to Drive: <webViewLink>"
+
+---
+
+## Step 7: Self-Update
+
+Append findings to **Applied Learning** below:
+```
+YYYY-MM-DD | <instance name> | <pattern/finding> | <future watch>
 ```
 
 ---
@@ -193,7 +302,8 @@ YYYY-MM-DD | <project context> | <pattern/finding> | <future watch>
 
 > Self-updating. Appended after each analysis run.
 
-<!--
-Format:
-YYYY-MM-DD | Project context | Pattern or finding | Future watch
--->
+2026-05-21 | Railway instance (9 workflows) | 8 of 9 workflows inactive — project in prototype stage with high build investment but near-zero deployment | Check active/inactive ratio as project health signal
+2026-05-21 | Railway instance | Duplicate workflows (Email Digest saved twice) — happens when workflow cloned without intent | Flag name collisions before reporting
+2026-05-21 | Railway instance | Hardcoded placeholder values (user@example.com, YOUR_TELEGRAM_CHAT_ID) survive into deployed workflows — silent failures on activation | Grep for common placeholder strings in node parameters
+2026-05-21 | Railway instance | Telegram is universal output channel (7/9 workflows) — mobile-first Telegram-centric UX is a strong consistent design choice
+2026-05-21 | Railway instance | workflows_full.json was 2.4MB — too large to Read directly; always use Python extraction script, never raw file read

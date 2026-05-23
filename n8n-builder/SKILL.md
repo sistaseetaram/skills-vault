@@ -1,6 +1,6 @@
 ---
 name: n8n-builder
-description: Orchestrates end-to-end n8n workflow creation using MCP-first approach (Nate's methodology). Triggers on requests to build, create, or automate workflows. Encodes 6-step build process: clarify → templates → nodes → build → validate → deploy.
+description: Orchestrates end-to-end n8n workflow creation using CLI-first approach. Triggers on requests to build, create, or automate workflows. Encodes 6-step build process: clarify → templates → nodes → build → validate → deploy. CLI used for all CRUD ops; MCP used only for node discovery, template search, validation, and partial updates.
 triggers:
   - "build a workflow"
   - "create a workflow"
@@ -101,13 +101,26 @@ n8n_validate_workflow(<workflow_code>)
 
 ---
 
-## Step 6: Deploy
+## Step 6: Deploy (CLI-first)
 
+Write workflow JSON to a temp file, then create via CLI:
+
+```bash
+# Write validated JSON to temp file
+cat > /tmp/workflow_deploy.json << 'EOF'
+<validated_workflow_json>
+EOF
+
+# Create via CLI (preferred — deterministic, low-token)
+n8n-cli workflow create --stdin < /tmp/workflow_deploy.json
+```
+
+Fallback only if CLI unavailable:
 ```
 n8n_create_workflow(<validated_code>, description="<1-2 sentence summary>")
 ```
 
-**NEVER activate automatically.** Always deploy inactive.
+**NEVER activate automatically.** Deploy inactive always.
 
 Post-deploy report format:
 ```
@@ -121,6 +134,36 @@ Credentials needed before activation:
 
 To activate: open workflow in n8n → connect credentials → toggle Active
 ```
+
+---
+
+## Workflow Management (CLI)
+
+Day-to-day operations — use CLI, not MCP:
+
+```bash
+# List all workflows
+n8n-cli workflow list
+
+# Get full JSON (for editing)
+n8n-cli workflow get <id> --format=json > /tmp/wf_edit.json
+
+# Update after editing
+n8n-cli workflow update <id> --stdin < /tmp/wf_edit.json
+
+# Activate / deactivate
+n8n-cli workflow activate <id>
+n8n-cli workflow deactivate <id>
+
+# Delete
+n8n-cli workflow delete <id>
+
+# Recent executions
+n8n-cli execution list --limit=10
+n8n-cli execution list --status=error --limit=10
+```
+
+For **surgical node-level edits** (change one parameter without full JSON replace): use `n8n_update_partial_workflow` MCP tool.
 
 ---
 

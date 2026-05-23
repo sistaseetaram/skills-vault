@@ -1,11 +1,40 @@
 ---
 name: n8n-mcp-tools-expert
-description: Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, managing credentials, auditing instance security, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns. IMPORTANT — Always consult this skill before calling any n8n-mcp tool — it prevents common mistakes like wrong nodeType formats, incorrect parameter structures, and inefficient tool usage. If the user mentions n8n, workflows, nodes, or automation and you have n8n MCP tools available, use this skill first.
+description: Expert guide for using n8n-mcp MCP tools effectively. Use ONLY for capabilities CLI cannot cover: node discovery (search_nodes/get_node), template search/deploy, workflow validation, partial node-level updates, and natural-language workflow generation. For all CRUD ops (list/get/create/update/delete/activate workflows, credentials, executions, data-tables), use n8n-cli instead. IMPORTANT — Always consult this skill before calling any n8n-mcp tool — it prevents wrong nodeType formats, incorrect parameter structures, and token waste.
 ---
 
 # n8n MCP Tools Expert
 
-Master guide for using n8n-mcp MCP server tools to build workflows.
+Master guide for n8n-mcp MCP tools — **fallback layer** for capabilities n8n CLI cannot cover.
+
+---
+
+## CLI-First Rule
+
+**Before using ANY MCP tool, check if n8n-cli handles it:**
+
+| Operation | Use CLI | Use MCP |
+|-----------|---------|---------|
+| List workflows | `n8n-cli workflow list` | ❌ |
+| Get workflow JSON | `n8n-cli workflow get <id>` | ❌ |
+| Create workflow | `cat wf.json \| n8n-cli workflow create --stdin` | ❌ |
+| Update workflow (full) | `n8n-cli workflow update <id>` | ❌ |
+| Delete workflow | `n8n-cli workflow delete <id>` | ❌ |
+| Activate/deactivate | `n8n-cli workflow activate/deactivate <id>` | ❌ |
+| List/manage executions | `n8n-cli execution list/get/retry` | ❌ |
+| List/create credentials | `n8n-cli credential list/create` | ❌ |
+| Data table CRUD | `n8n-cli data-table ...` | ❌ |
+| **Find a node type** | ❌ | `search_nodes` ✅ |
+| **Get node schema** | ❌ | `get_node` ✅ |
+| **Search templates** | ❌ | `search_templates` ✅ |
+| **Deploy template** | ❌ | `n8n_deploy_template` ✅ |
+| **Validate workflow** | ❌ | `validate_workflow` ✅ |
+| **Surgical node edit** | ❌ (full JSON only) | `n8n_update_partial_workflow` ✅ |
+| **NL → workflow** | ❌ | `n8n_generate_workflow` ✅ |
+
+**Invoke `/n8n-cli` skill** for CLI operations. Invoke this skill only for the MCP-only column above.
+
+---
 
 ---
 
