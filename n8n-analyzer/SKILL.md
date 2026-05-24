@@ -307,3 +307,4 @@ YYYY-MM-DD | <instance name> | <pattern/finding> | <future watch>
 2026-05-21 | Railway instance | Hardcoded placeholder values (user@example.com, YOUR_TELEGRAM_CHAT_ID) survive into deployed workflows — silent failures on activation | Grep for common placeholder strings in node parameters
 2026-05-21 | Railway instance | Telegram is universal output channel (7/9 workflows) — mobile-first Telegram-centric UX is a strong consistent design choice
 2026-05-21 | Railway instance | workflows_full.json was 2.4MB — too large to Read directly; always use Python extraction script, never raw file read
+2026-05-23 | Railway instance | Workflow updates via PUT API fail with 400 Bad Request if read-only properties (id, meta, isArchived, etc.) or custom settings (availableInMCP) are present; payload must be sanitized to name, nodes, connections, settings (standard-only), staticData, pinData | Sanitize updates before calling API
