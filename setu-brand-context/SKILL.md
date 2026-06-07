@@ -15,34 +15,27 @@ description: >
 
 # Setu Brand Context
 
-## What to do
+This skill loads Setu's brand identity from its canonical source: the **personal-brand-wiki**.
 
-1. Read this SKILL.md and the **required** small file `CLAUDE.md` (hard rules).
-2. Print the **Brand Context Summary** below.
-3. Open the matching `references/` file(s) for the current task (see Reference Map).
-4. Apply constraints to the task. If no task, stop after the summary.
+Personal-brand-wiki is the single source of truth. This skill is a reader of it, not a second copy. Brand facts here → stale. Brand facts in the wiki → live.
 
-## Reference Map (open on demand)
+## Load procedure
 
-| Need | File |
-|---|---|
-| Color palette, opacity rule, grandfathered hex | `references/palette.md` |
-| Fonts, scale, label spec | `references/typography.md` |
-| Positioning, audience, voice DOs/DON'Ts | `references/voice.md` |
-| Live site URL, stack, LinkedIn locked assets | `references/assets.md` |
-| Hard NO list (no new hex, no gradients, etc.) | `references/forbidden.md` |
+1. Read `personal-brand-wiki/wiki/index.md` — the map.
+2. Read ALL files in `personal-brand-wiki/wiki/syntheses/` — the bets (small, high-value).
+3. Read the specific concept page(s) needed for the task:
+   - Voice + tone → `personal-brand-wiki/wiki/concepts/setu-voice.md`
+   - Positioning + bridge → `personal-brand-wiki/wiki/concepts/setu-positioning.md`
+   - Values + filter checklist → `personal-brand-wiki/wiki/concepts/setu-values.md`
+   - Visual system → `personal-brand-wiki/wiki/concepts/setu-visual-identity.md`
+   - Audience / ICP → `personal-brand-wiki/wiki/concepts/target-audience.md`
+4. For design tokens + visual system details: also read `personal-brand-wiki/AGENTS.md` and the on-demand files below.
+5. Apply constraints to the task.
 
-## Required source files
-
-```
-HARD RULES (palette lock, branch policy, locked assets — small, always read):
-/Users/sistaseetaram/Desktop/Claude/claude_projects/MyPersonalBrand/CLAUDE.md
-```
-
-## On-demand source files (only if reference snippet insufficient)
+## On-demand files (raw source details — rarely needed)
 
 ```
-BRAND BRIEF (voice, values, positioning — source of truth):
+BRAND BRIEF (voice, values, positioning — full source):
 /Users/sistaseetaram/Desktop/Claude/claude_projects/MyPersonalBrand/setu-brand/01-foundation/brand-brief.md
 
 DESIGN TOKENS (machine-readable):
@@ -54,39 +47,25 @@ DESIGN SYSTEM (component patterns):
 VISUAL IDENTITY (full guidelines — large, rarely needed):
 /Users/sistaseetaram/Desktop/Claude/claude_projects/MyPersonalBrand/setu-brand/02-visual-identity/brand-guidelines.html
 
-LIVE SITE SOURCE (only for component-accurate styling):
-/Users/sistaseetaram/Desktop/Claude/claude_projects/MyPersonalBrand/setu-brand/03-collateral/website/site/
+HARD RULES (palette lock, branch policy):
+/Users/sistaseetaram/Desktop/Claude/claude_projects/MyPersonalBrand/CLAUDE.md
 ```
 
-## Brand Context Summary
+The wiki concept pages (`setu-visual-identity`, `setu-voice`, etc.) are the distillations. The on-demand files above are the raw originals — read them only when the distillation doesn't have enough detail.
 
-**Brand:** Setu — AI agency for practical AI adoption. Sanskrit सेतु = bridge. Founder-led.
-**Live:** https://setuagency.com (Astro + Cloudflare Pages, www→apex 301, SSL).
-**Positioning:** Start with one repeated workflow. Bridge Zero (free workflows) → Bridge 01 (paid pilot).
-**Audience (Bridge 01):** India construction & architecture firms. Smart, busy owners. Outcomes, not jargon.
+## Reference map (design tasks)
 
-**Voice:** Quietly confident expert. Plainspoken. ROI-forward. Technically deep, never showing off.
-- DO: specifics (hours saved, money, workflows), short sentences, plain words.
-- DON'T: "revolutionary", "game-changing", "cutting-edge", jargon, **proof claims before they exist**, hype.
-- Test: *"Would a smart, busy architecture firm owner feel respected — or sold to?"*
-
-**Colors (11 locked tokens — no new hex, no derived tints):** Light / Paper / Terracotta Dark / Forest / Anthracite + Muted + Rule. New tints use locked-fg + opacity 0.6–0.8. Full table → `references/palette.md`.
-
-**Typography:** Cormorant Garamond (display) · Inter (body 17px / 1.7) · Noto Sans Devanagari (`से` glyph). No new fonts. → `references/typography.md`.
-
-**Feel:** Calm, crafted, Indian, confident in negative space. Architecture studio, not tech startup. No gradients, glows, neon, AI-brain motifs. Hard NO list → `references/forbidden.md`.
-
-## Applying brand to tasks
-
-- **Copy/writing:** Setu voice (see voice.md). Swap jargon for specifics. Strip hype. Outcome-first.
-- **Design/UI:** Locked tokens only (palette.md). Cormorant for display, Inter for body. Generous whitespace. Default Light/Paper; reserve Terracotta Dark for hero moments. Check forbidden.md before any new hex.
-- **Content/social:** Show the work, not the tech. Real hours, real money, real workflows.
+| Need | Read |
+|---|---|
+| Color palette, opacity rule | `references/palette.md` (this skill) OR `setu-visual-identity` wiki concept |
+| Fonts, scale, label spec | `references/typography.md` (this skill) |
+| Positioning, audience, voice | `personal-brand-wiki/wiki/concepts/setu-voice.md` + `setu-positioning.md` |
+| Hard NO list | `references/forbidden.md` (this skill) |
 
 ## Self-Improvement Loop
 
-After using this skill, note if:
-1. A file path changed → update path here or in the relevant reference
-2. New locked decision (color, font, asset) → add to the matching reference, not SKILL.md
-3. Summary format missed a use case → extend summary or add a new reference file
-4. Trigger phrase missed (user had to ask twice) → add to description
-5. Over-triggering → tighten description
+After using this skill:
+1. If a wiki concept page is stale or wrong → update the wiki page. Do NOT update this SKILL.md with brand facts.
+2. If a file path changed → update the on-demand file list above.
+3. If a trigger phrase missed → add to description.
+4. If a new locked decision (color, font, asset) → add to `personal-brand-wiki/wiki/concepts/setu-visual-identity.md`, then also to `references/palette.md` if design-token-level.
