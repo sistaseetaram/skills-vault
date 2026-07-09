@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIFTY 50 — Index Research Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0f172a; --accent:#2563eb; --pos:#16a34a; --neg:#dc2626; --neu:#d707d7; --neu2:#d97706; --ink:#1e293b; --mut:#64748b; --line:#e2e8f0; --bg:#f8fafc; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;font-size:14px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 0 40px}
+  header.hero{background:var(--navy);color:#fff;padding:32px 40px}
+  .hero .row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
+  .hero h1{font-size:30px;font-weight:800;letter-spacing:-.5px}
+  .hero .sub{color:#94a3b8;font-size:13px;margin-top:4px}
+  .pill{display:inline-block;padding:7px 16px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.3px}
+  .pill.neu{background:var(--neu2);color:#fff}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .kpi{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px}
+  .kpi .l{color:#94a3b8;font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+  .kpi .v{font-size:20px;font-weight:700;margin-top:4px;color:#fff}
+  section{padding:26px 40px;border-bottom:1px solid var(--line);page-break-inside:avoid}
+  h2{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:5px;height:18px;background:var(--accent);border-radius:3px;display:inline-block}
+  h3{font-size:14px;font-weight:600;color:var(--ink);margin:16px 0 8px}
+  p{margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+  th{background:var(--bg);font-weight:600;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pos{color:var(--pos);font-weight:600}.neg{color:var(--neg);font-weight:600}.neu{color:var(--neu2);font-weight:600}
+  .bar{height:10px;border-radius:5px;background:var(--accent);display:inline-block;vertical-align:middle}
+  ul.clean{list-style:none;padding-left:0}
+  ul.clean li{padding:6px 0 6px 22px;position:relative}
+  ul.clean li::before{content:"▸";color:var(--accent);position:absolute;left:0;font-weight:700}
+  .box{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:16px 18px;margin:10px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .lvl{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line)}
+  footer{padding:22px 40px;color:var(--mut);font-size:12px;background:var(--bg)}
+  @media print{.kpis{grid-template-columns:repeat(4,1fr)} section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="row">
+    <div>
+      <h1>NIFTY 50</h1>
+      <div class="sub">NSE Benchmark Index &nbsp;·&nbsp; ^NSEI &nbsp;·&nbsp; India Large-Cap</div>
+    </div>
+    <div style="text-align:right">
+      <span class="pill neu">OUTLOOK: NEUTRAL–CONSTRUCTIVE</span>
+      <div class="sub" style="margin-top:8px">Data as of close 19-Jun-2026 (Fri)<br>Report generated 21-Jun-2026 · Market closed (weekend)</div>
+    </div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="l">Level (CMP)</div><div class="v">24,013</div></div>
+    <div class="kpi"><div class="l">Near-Term Range</div><div class="v">24.0k–24.4k</div></div>
+    <div class="kpi"><div class="l">P/E (vs 10yr avg)</div><div class="v">20.0 · −15%</div></div>
+    <div class="kpi"><div class="l">52-Wk High / Low</div><div class="v">26,373 / 22,183</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>Index Overview</h2>
+  <p>The NIFTY 50 is the National Stock Exchange's free-float market-cap-weighted benchmark of India's 50 largest, most liquid listed companies, spanning ~13 sectors. It closed at <strong>24,013.10</strong> on 19-Jun-2026, down 0.64% (−154.9 pts) on the day, sitting roughly 9% below its 52-week high of 26,373 and 8% above its low of 22,183. After a sharp March-2026 drawdown the index has recovered into a consolidation band just above the psychological 24,000 mark. Aggregate market cap of constituents is ~₹194 lakh crore. Trailing P/E of ~20.0 sits about 15% below its 10-year average — the index is trading at a below-average valuation, a notable shift from the rich multiples of prior years.</p>
+</section>
+
+<section>
+  <h2>Valuation</h2>
+  <table>
+    <tr><th>Metric</th><th>NIFTY 50</th><th>10-Yr Avg</th><th>Read</th></tr>
+    <tr><td>Trailing P/E</td><td class="num">20.0–20.7</td><td class="num">~23.4</td><td class="pos">Below avg — attractive</td></tr>
+    <tr><td>Price / Book</td><td class="num">3.07–3.16</td><td class="num">~3.4</td><td class="pos">Slightly below avg</td></tr>
+    <tr><td>Dividend Yield</td><td class="num">1.2–1.4%</td><td class="num">~1.3%</td><td class="neu">In line</td></tr>
+    <tr><td>5-Yr Price CAGR</td><td class="num">8.9%</td><td class="num">—</td><td class="neu">Moderate</td></tr>
+    <tr><td>10-Yr Price CAGR</td><td class="num">11.3%</td><td class="num">—</td><td class="pos">Healthy long-run</td></tr>
+  </table>
+  <div class="box"><strong>Valuation stance:</strong> At ~20x trailing earnings — ~15% under its 10-year mean — NIFTY 50 is no longer expensive on a relative basis. Earnings yield (~5%) is competitive but still below the ~6.3% on the 10-yr G-Sec, so the equity risk premium is thin; valuation is supportive, not a screaming buy.</div>
+</section>
+
+<section>
+  <h2>Sector Composition</h2>
+  <p>Concentration is dominated by Financials; a small move in a few heavyweights (Reliance, HDFC Bank) drives the whole index.</p>
+  <table>
+    <tr><th>Sector</th><th>Weight</th><th></th></tr>
+    <tr><td>Financial Services</td><td class="num">~35.5–37.7%</td><td><span class="bar" style="width:280px"></span></td></tr>
+    <tr><td>Oil, Gas &amp; Consumable Fuels</td><td class="num">~10–11%</td><td><span class="bar" style="width:80px"></span></td></tr>
+    <tr><td>Information Technology</td><td class="num">~8.8–9.4%</td><td><span class="bar" style="width:72px"></span></td></tr>
+    <tr><td>Automobile &amp; Components</td><td class="num">~6.6–7.0%</td><td><span class="bar" style="width:54px"></span></td></tr>
+    <tr><td>FMCG</td><td class="num">~5.9–6.0%</td><td><span class="bar" style="width:48px"></span></td></tr>
+    <tr><td>Telecommunication</td><td class="num">~5.3–4.6%</td><td><span class="bar" style="width:42px"></span></td></tr>
+  </table>
+  <h3>Top constituents</h3>
+  <ul class="clean">
+    <li><strong>Reliance Industries</strong> — highest single weight ~9.26%</li>
+    <li><strong>HDFC Bank</strong> — largest financial; top index driver</li>
+    <li><strong>Infosys / TCS</strong> — IT bellwethers (dragged the index 19-Jun on IT weakness)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Recent Performance &amp; Flows</h2>
+  <div class="grid2">
+    <div>
+      <h3>Price action</h3>
+      <ul class="clean">
+        <li>19-Jun close 24,013, <span class="neg">−0.64%</span> — IT counters (Infosys, TCS, Tech Mahindra) led declines</li>
+        <li><span class="pos">NTPC</span>, power &amp; telecom names bid up — defensive/utility rotation</li>
+        <li>Consolidating just above 24,000 after recovering from the March drawdown</li>
+      </ul>
+    </div>
+    <div>
+      <h3>FII / DII flows (2026)</h3>
+      <ul class="clean">
+        <li>Mar-2026: index <span class="neg">−11.3%</span> in one month; FII outflow ~₹1.17 lakh cr (record)</li>
+        <li>DIIs absorbed the selling → <span class="pos">+7.5%</span> bounce the next month</li>
+        <li>SIP inflows ~₹28,000 cr/month (7× FY17) — structural domestic cushion</li>
+        <li>Index increasingly insulated from FII swings</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Technical Levels</h2>
+  <div class="lvl"><span>Immediate resistance</span><strong class="neg">24,200 → 24,400</strong></div>
+  <div class="lvl"><span>Spot</span><strong>24,013</strong></div>
+  <div class="lvl"><span>Key psychological support</span><strong class="pos">24,000</strong></div>
+  <div class="lvl"><span>52-week range</span><strong>22,183 – 26,373</strong></div>
+  <p style="margin-top:12px">Near-term structure is constructively bullish while <strong>24,000</strong> holds. A sustained break above <strong>24,200</strong> opens the path to <strong>24,400</strong>; loss of 24,000 risks unwinding the recovery and a retest toward the lower band.</p>
+</section>
+
+<section>
+  <h2>Outlook &amp; Positioning</h2>
+  <div class="box">
+    <strong>Stance: NEUTRAL–CONSTRUCTIVE (Accumulate on dips).</strong>
+    <ul class="clean" style="margin-top:8px">
+      <li>Valuation ~15% below 10-yr mean removes the prior overvaluation overhang</li>
+      <li>Strong, sticky domestic (SIP/DII) flows blunt FII-driven shocks</li>
+      <li>Thin equity risk premium vs bonds caps aggressive upside — favor staggered entry</li>
+      <li>Index-level allocation guidance: accumulate 24,000–23,600 zone; trim/hedge near 24,400+ resistance</li>
+    </ul>
+  </div>
+  <p><strong>Key risks:</strong> renewed large FII outflows, IT-sector earnings weakness (high index drag), global rate/oil shocks, and Financials concentration risk (any banking stress hits ~36% of the index).</p>
+</section>
+
+<section>
+  <h2>Conclusion</h2>
+  <p>NIFTY 50 enters late-June 2026 in a healthier valuation posture than it has held in years — ~20x trailing earnings, roughly 15% under its long-run average — after surviving a violent March FII-led drawdown that domestic investors absorbed with unusual speed. The technical picture is balanced: a tight consolidation above 24,000 with bulls needing a decisive push through 24,200–24,400 to re-establish an uptrend.</p>
+  <p>For a benchmark exposure, the setup favors disciplined accumulation rather than chasing. Below-average multiples plus a structural ₹28,000 cr/month SIP bid provide a floor, while a thin equity risk premium and heavy Financials/IT concentration argue against expecting rapid re-rating. Net: a reasonable, not euphoric, entry zone for long-horizon index investors.</p>
+</section>
+
+<section>
+  <h2>Tomorrow's Trend — Mon, 22-Jun-2026</h2>
+  <p>First session after the weekend (last close Fri 19-Jun, 24,013). Probabilistic read from Friday's close technicals and flow backdrop — not live pre-open data.</p>
+  <div class="box">
+    <strong>Bias: Mildly bullish / range-bound — up-tilt while 24,000 holds.</strong>
+    <span style="display:inline-block;margin-top:6px"><span class="pos">~55% up/flat</span> &nbsp;·&nbsp; <span class="neg">~45% down</span></span>
+  </div>
+  <div class="grid2">
+    <div>
+      <h3>Levels to watch</h3>
+      <div class="lvl"><span>Resistance 2</span><strong class="neg">24,400</strong></div>
+      <div class="lvl"><span>Resistance 1</span><strong class="neg">24,200</strong></div>
+      <div class="lvl"><span>Spot / pivot</span><strong>24,013</strong></div>
+      <div class="lvl"><span>Support 1 (psych.)</span><strong class="pos">24,000</strong></div>
+      <div class="lvl"><span>Support 2</span><strong class="pos">23,800 → 23,600</strong></div>
+    </div>
+    <div>
+      <h3>Scenarios</h3>
+      <ul class="clean">
+        <li><strong>Base:</strong> flat-to-up open, chop in <strong>23,950–24,200</strong>. Fri dip was IT-led, not broad — structure intact.</li>
+        <li><strong>Bull trigger:</strong> sustained &gt;24,200 → momentum to 24,400; needs IT (Infosys/TCS) + Reliance/HDFC Bank green.</li>
+        <li><strong>Bear trigger:</strong> break &lt;24,000 on volume → unwind to 23,800/23,600; risk = fresh FII selling or weak global/IT cues.</li>
+      </ul>
+    </div>
+  </div>
+  <p><strong>Tilt rationale:</strong> slight up-bias — below-average valuation (P/E ~15% under 10-yr mean) plus the structural DII/SIP bid cushion downside. <strong>Pre-open tells:</strong> GIFT Nifty print before 09:15 IST, weekend US/crude cues, latest FII flow data.</p>
+</section>
+
+<section>
+  <h2>Market Context</h2>
+  <p>Day's tape (19-Jun) showed a defensive rotation — utilities and telecom up, IT down on broad sector weakness — typical of a market digesting gains rather than trending. Broader 2026 narrative: a sharp FII exit in Q1 met by record domestic absorption, leaving the index range-bound but structurally better-supported than in FII-dependent cycles past. Valuation reset + domestic flows = the two pillars underpinning the current constructive-but-cautious view.</p>
+</section>
+
+<footer>
+  <strong>Disclaimer:</strong> For educational / informational purposes only. Not investment advice. An index is not directly investable except via ETFs/index funds; figures are point-in-time and may be revised. Verify live levels before acting.<br><br>
+  <strong>Sources:</strong> Screener.in (index valuation), NSE, Yahoo Finance / TradingView (levels), HDFC Sky (19-Jun gainers/losers), Craytheon (P/E history), IPO Central / Bajaj AMC / Dhan (sector weights), INDmoney / NSE FII-DII reports (flows). &nbsp;·&nbsp; Generated by the stock-analysis skill, 21-Jun-2026.
+</footer>
+
+</div>
+</body>
+</html>

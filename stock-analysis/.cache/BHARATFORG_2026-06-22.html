@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharat Forge Ltd — Equity Research Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f172a; --navy2:#1e293b; --accent:#2563eb; --accent-soft:#dbeafe;
+    --pos:#16a34a; --neg:#dc2626; --neu:#d97706;
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg-soft:#f8fafc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',-apple-system,sans-serif;color:var(--ink);line-height:1.6;background:#fff;font-size:14px;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px 60px;}
+  h2{font-size:20px;font-weight:700;color:var(--navy);margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+  h3{font-size:15px;font-weight:600;color:var(--navy2);margin:18px 0 8px;}
+  p{margin:0 0 10px;}
+  section{margin:34px 0;page-break-inside:avoid;}
+  .major{page-break-before:always;}
+  table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:13px;}
+  th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);}
+  th{background:var(--bg-soft);font-weight:600;color:var(--navy2);font-size:12px;text-transform:uppercase;letter-spacing:.03em;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  .pos{color:var(--pos);font-weight:600;} .neg{color:var(--neg);font-weight:600;} .neu{color:var(--neu);font-weight:600;}
+  .muted{color:var(--muted);}
+  /* header */
+  .hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:0 0 14px 14px;padding:30px 28px 26px;margin-bottom:8px;}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
+  .hero h1{font-size:27px;font-weight:800;letter-spacing:-.01em;}
+  .hero .tick{color:#93c5fd;font-weight:500;font-size:14px;margin-top:3px;}
+  .pill{display:inline-block;padding:9px 22px;border-radius:30px;font-weight:800;font-size:17px;letter-spacing:.04em;}
+  .pill.sell{background:var(--neg);color:#fff;} .pill.hold{background:var(--neu);color:#fff;} .pill.buy{background:var(--pos);color:#fff;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;}
+  .kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:13px 15px;}
+  .kpi .lab{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;}
+  .kpi .val{font-size:21px;font-weight:700;margin-top:3px;}
+  .asof{margin-top:18px;font-size:12px;color:#94a3b8;}
+  .callout{background:var(--bg-soft);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;}
+  .rec-box{border:2px solid var(--neg);border-radius:12px;padding:20px 22px;background:#fef2f2;margin:16px 0;}
+  .rec-box h3{color:var(--neg);margin-top:0;font-size:17px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  ul{margin:6px 0 12px 20px;} li{margin-bottom:5px;}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);}
+  .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;background:var(--accent-soft);color:var(--accent);margin-left:6px;}
+  @media(max-width:680px){.kpis,.grid2{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div>
+      <h1>Bharat Forge Ltd</h1>
+      <div class="tick">NSE: BHARATFORG &nbsp;·&nbsp; BSE: 500493 &nbsp;·&nbsp; Auto Components / Forgings &amp; Defence</div>
+    </div>
+    <div style="text-align:right;">
+      <span class="pill sell">SELL / REDUCE</span>
+    </div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="lab">CMP</div><div class="val">₹2,049</div></div>
+    <div class="kpi"><div class="lab">Target (12M)</div><div class="val">₹1,650</div></div>
+    <div class="kpi"><div class="lab">Implied</div><div class="val neg" style="color:#fca5a5;">−19.5%</div></div>
+    <div class="kpi"><div class="lab">Horizon</div><div class="val">12 Months</div></div>
+  </div>
+  <div class="asof">Data as of last close, 19 Jun 2026 (FY26 = year ended 31 Mar 2026). Market open at time of run; figures from Screener.in consolidated + web sources.</div>
+</div>
+
+<div class="wrap">
+
+<!-- 2. OVERVIEW -->
+<section>
+  <h2>1 · Company Overview</h2>
+  <p>Bharat Forge Ltd (BFL), the flagship of the Kalyani Group, is one of the world's largest forging companies and India's leading manufacturer of forged and machined components. Its legacy base serves global commercial-vehicle and passenger-vehicle OEMs (axles, crankshafts, chassis) across India, Europe and North America. Over the past five years BFL has aggressively diversified beyond cyclical autos into <strong>defence (artillery guns, armoured vehicles, protected systems via Kalyani Strategic Systems / KSSL), aerospace, e-mobility and industrials</strong>. FY26 consolidated revenue reached ₹16,812 Cr with net profit of ₹1,089 Cr. The investment narrative has decisively shifted from "auto-ancillary cyclical" to "defence &amp; aerospace structural growth story" — which is precisely why the stock now trades at a steep premium multiple. The central question for investors is whether earnings can grow into a P/E of ~83×.</p>
+</section>
+
+<!-- 3. QUANT -->
+<section class="major">
+  <h2>2 · Quantitative Analysis</h2>
+
+  <h3>(a) Market Valuation</h3>
+  <table>
+    <tr><th>Metric</th><th class="num">Value</th><th>Read</th></tr>
+    <tr><td>Market Cap</td><td class="num">₹97,946 Cr</td><td>Large-cap</td></tr>
+    <tr><td>Current Price</td><td class="num">₹2,049</td><td>Near 52-wk high (₹2,060)</td></tr>
+    <tr><td>52-wk High / Low</td><td class="num">₹2,060 / 1,100</td><td class="neg">~Doubled off lows</td></tr>
+    <tr><td>Stock P/E</td><td class="num">83.0</td><td class="neg">Very rich vs sector</td></tr>
+    <tr><td>Price / Book</td><td class="num">10.2×</td><td class="neg">Expensive (BV ₹200)</td></tr>
+    <tr><td>Dividend Yield</td><td class="num">0.42%</td><td class="neu">Low</td></tr>
+  </table>
+
+  <h3>(b) Profitability</h3>
+  <table>
+    <tr><th>Metric</th><th class="num">FY24</th><th class="num">FY25</th><th class="num">FY26</th><th>Trend</th></tr>
+    <tr><td>ROCE %</td><td class="num">13%</td><td class="num">12%</td><td class="num">13%</td><td class="neu">Stable, sub-peer</td></tr>
+    <tr><td>ROE %</td><td class="num">—</td><td class="num">—</td><td class="num">12.5%</td><td class="neu">Modest for the multiple</td></tr>
+    <tr><td>OPM % (full yr)</td><td class="num">16%</td><td class="num">18%</td><td class="num">17%</td><td class="pos">Improved vs FY23 (13%)</td></tr>
+  </table>
+  <p class="muted">Consolidated margins have recovered from the FY23 trough (13%) to a healthier 17–18%, but a ~12.5% ROE is unremarkable against a 10.2× book multiple — the market is paying for future return on capital, not current.</p>
+
+  <h3>(c) Growth (consolidated P&amp;L)</h3>
+  <table>
+    <tr><th>Metric</th><th class="num">FY21</th><th class="num">FY24</th><th class="num">FY25</th><th class="num">FY26</th><th class="num">5-yr CAGR</th></tr>
+    <tr><td>Sales (₹ Cr)</td><td class="num">6,336</td><td class="num">15,682</td><td class="num">15,123</td><td class="num">16,812</td><td class="num pos">~21.5%</td></tr>
+    <tr><td>Net Profit (₹ Cr)</td><td class="num">−127</td><td class="num">910</td><td class="num">913</td><td class="num">1,089</td><td class="num neu">n.m.*</td></tr>
+    <tr><td>EPS (₹)</td><td class="num">−2.71</td><td class="num">20.43</td><td class="num">19.69</td><td class="num">22.58</td><td class="num">—</td></tr>
+  </table>
+  <p class="muted">*Screener's "39.8% 5-yr profit CAGR" is flattered by a depressed FY21 base (COVID loss). On a normalised FY22→FY26 view, net profit is essentially flat (₹1,077 Cr → ₹1,089 Cr) — top-line grew strongly but bottom-line was held back by EU weakness, NA truck destocking and higher interest/depreciation from the capex build-out.</p>
+
+  <h3>(d) Balance Sheet (FY26)</h3>
+  <table>
+    <tr><th>Item</th><th class="num">FY24</th><th class="num">FY25</th><th class="num">FY26</th></tr>
+    <tr><td>Borrowings (₹ Cr)</td><td class="num">7,948</td><td class="num">6,698</td><td class="num">7,309</td></tr>
+    <tr><td>Reserves (₹ Cr)</td><td class="num">7,077</td><td class="num">9,158</td><td class="num">9,484</td></tr>
+    <tr><td>Equity (₹ Cr)</td><td class="num">93</td><td class="num">96</td><td class="num">96</td></tr>
+    <tr><td>Net Worth (₹ Cr)</td><td class="num">7,170</td><td class="num">9,254</td><td class="num">9,580</td></tr>
+    <tr><td>Debt / Equity</td><td class="num neu">1.11</td><td class="num pos">0.72</td><td class="num neu">0.76</td></tr>
+  </table>
+  <p class="muted">Leverage eased materially after the FY25 equity build but ticked up again in FY26 as capex (aerospace facility, defence capacity) resumed. D/E of ~0.76 is manageable for a forging business but not light.</p>
+
+  <h3>(e) Cash Flow (₹ Cr)</h3>
+  <table>
+    <tr><th>Activity</th><th class="num">FY24</th><th class="num">FY25</th><th class="num">FY26</th></tr>
+    <tr><td>Operating (CFO)</td><td class="num pos">1,664</td><td class="num pos">1,796</td><td class="num pos">1,487</td></tr>
+    <tr><td>Investing</td><td class="num">−665</td><td class="num">−1,964</td><td class="num">−1,033</td></tr>
+    <tr><td>Financing</td><td class="num">−203</td><td class="num">−570</td><td class="num">−442</td></tr>
+    <tr><td>Free Cash Flow</td><td class="num">164</td><td class="num">352</td><td class="num">374</td></tr>
+  </table>
+  <p class="muted">CFO remains solid but FY26 FCF of ₹374 Cr is thin relative to a ~₹98,000 Cr market cap (FCF yield &lt;0.4%) — heavy reinvestment is the deliberate trade-off for the growth runway.</p>
+
+  <h3>(f) Dividend</h3>
+  <p>Final dividend of ₹6.50/share recommended for FY26; healthy long-run payout (~38–44%). Yield is low at 0.42% — this is a growth/capex story, not an income stock. AGM 11 Aug 2026, record date 3 Jul, payout ~14 Aug.</p>
+
+  <h3>(g) Efficiency</h3>
+  <table>
+    <tr><th>Metric</th><th class="num">FY24</th><th class="num">FY25</th><th class="num">FY26</th></tr>
+    <tr><td>Debtor Days</td><td class="num">74</td><td class="num">70</td><td class="num neu">85</td></tr>
+    <tr><td>Inventory Days</td><td class="num">159</td><td class="num">198</td><td class="num">195</td></tr>
+    <tr><td>Cash Conversion Cycle</td><td class="num">121</td><td class="num">138</td><td class="num neu">136</td></tr>
+  </table>
+  <p class="muted">Working-capital intensity is structurally high (forging + defence long-cycle orders) and worsened modestly in FY26 — debtor days rose to 85.</p>
+
+  <h3>(h) Quarterly Trend (consolidated, ₹ Cr)</h3>
+  <table>
+    <tr><th>Qtr</th><th class="num">Sales</th><th class="num">Op. Profit</th><th class="num">OPM</th><th class="num">Net Profit</th><th class="num">EPS</th></tr>
+    <tr><td>Q1 FY26 (Jun-25)</td><td class="num">3,909</td><td class="num">670</td><td class="num">17%</td><td class="num">284</td><td class="num">5.93</td></tr>
+    <tr><td>Q2 FY26 (Sep-25)</td><td class="num">4,032</td><td class="num">724</td><td class="num">18%</td><td class="num">299</td><td class="num">6.26</td></tr>
+    <tr><td>Q3 FY26 (Dec-25)</td><td class="num">4,343</td><td class="num">746</td><td class="num">17%</td><td class="num">273</td><td class="num">5.53</td></tr>
+    <tr><td>Q4 FY26 (Mar-26)</td><td class="num">4,528</td><td class="num">777</td><td class="num">17%</td><td class="num neg">233</td><td class="num neg">4.86</td></tr>
+  </table>
+  <p class="muted">Revenue grew sequentially every quarter, but Q4 net profit <em>fell</em> to ₹233 Cr — dragged by negative other income (−₹46 Cr) and a higher 40% tax rate. Operating execution is improving; reported PAT momentum is not.</p>
+</section>
+
+<!-- 4. QUALITATIVE -->
+<section class="major">
+  <h2>3 · Qualitative Analysis</h2>
+  <h3>Business Model</h3>
+  <p>Four engines: (1) <strong>Auto/CV components</strong> — the legacy cash cow, cyclical, tied to EU &amp; NA truck cycles; (2) <strong>Defence (KSSL)</strong> — artillery (155mm guns), armoured/protected vehicles, components and ammunition, increasingly export-led; (3) <strong>Aerospace</strong> — forging &amp; machining, a new dedicated facility under construction, exports up ~4× in five years (~15% of industrial exports); (4) <strong>Industrials &amp; e-mobility</strong>. The strategic thrust is to lower auto cyclicality and raise structural defence/aerospace mix.</p>
+  <h3>Management &amp; Strategy</h3>
+  <p>Promoter (Kalyani family) holding 44.07%, stable. Management guided <strong>15–20% defence revenue growth in FY26</strong> and frames defence as a multi-year engine on the back of a rising domestic + export order pipeline. Near-term, management flagged anaemic EU demand and NA truck inventory destocking as headwinds, with "green shoots" of CV recovery expected to build through FY27.</p>
+  <h3>Recent Corporate Actions (Jun 2026)</h3>
+  <ul>
+    <li><strong>₹425 Cr MoD contract</strong> (19 Jun 2026) — supply of Gas Turbine Generators to the Indian Navy.</li>
+    <li><strong>KSSL × AM General partnership</strong> (18 Jun) — proposal for U.S. Army MTC program delivery in 2027.</li>
+    <li><strong>Eurosatory 2026 unveilings</strong> — Simha 4×4 armoured vehicle (with Paramount) and MArG 155mm mounted artillery series — export-positioning showpieces.</li>
+  </ul>
+</section>
+
+<!-- 5. SHAREHOLDING -->
+<section>
+  <h2>4 · Shareholding Pattern</h2>
+  <table>
+    <tr><th>Holder</th><th class="num">Mar-25</th><th class="num">Jun-25</th><th class="num">Sep-25</th><th class="num">Dec-25</th><th class="num">Mar-26</th></tr>
+    <tr><td>Promoters</td><td class="num">44.07%</td><td class="num">44.07%</td><td class="num">44.07%</td><td class="num">44.07%</td><td class="num">44.07%</td></tr>
+    <tr><td>FIIs</td><td class="num">16.08%</td><td class="num">14.37%</td><td class="num">13.62%</td><td class="num neg">12.40%</td><td class="num pos">14.15%</td></tr>
+    <tr><td>DIIs</td><td class="num">30.20%</td><td class="num">31.26%</td><td class="num">32.11%</td><td class="num pos">34.08%</td><td class="num">32.62%</td></tr>
+    <tr><td>Public</td><td class="num">9.49%</td><td class="num">10.15%</td><td class="num">10.05%</td><td class="num">9.29%</td><td class="num">9.00%</td></tr>
+  </table>
+  <p class="muted">Promoter holding steady at 44.07% (trimmed from 45.26% in late 2024). The standout trend is the <strong>strong DII accumulation</strong> (28% → ~33% over two years), absorbing the FII outflows that bottomed in Dec-25 before a partial FII rebound to 14.15% in Mar-26. Rising domestic institutional conviction underpins the premium rating — but also concentrates ownership and downside risk if sentiment turns.</p>
+</section>
+
+<!-- 6. THESIS -->
+<section class="major">
+  <h2>5 · Investment Thesis</h2>
+  <div class="grid2">
+    <div>
+      <h3>Key Drivers (Bull)</h3>
+      <ul>
+        <li>Structural defence growth — 15–20% guided, export-led KSSL pipeline.</li>
+        <li>Aerospace scaling 4× in 5 years; dedicated facility coming online.</li>
+        <li>De-risking from auto cyclicality; rising high-margin order mix.</li>
+        <li>CV recovery optionality as NA destocking ends in FY27.</li>
+        <li>Strong DII sponsorship; stable promoter holding.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Risks (Bear)</h3>
+      <ul>
+        <li><strong>Valuation:</strong> P/E ~83×, P/B 10.2× — priced for perfection.</li>
+        <li>FY22→FY26 net profit essentially flat; Q4 PAT fell QoQ.</li>
+        <li>EU demand anaemic; NA truck cycle still weak.</li>
+        <li>Thin FCF yield (&lt;0.4%); high working-capital intensity.</li>
+        <li>Defence order lumpiness &amp; execution timing risk.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><strong>Industry positioning:</strong> Global forging leader with a credible, differentiated defence/aerospace pivot — genuinely high-quality. But it now trades like a pure-play defence darling (40–60× peer range, e.g. HAL/BEL) <em>stacked on top of</em> an auto-ancillary cyclical core (25–40× range). The blended business does not yet earn the standalone defence multiple the price implies.</p></div>
+</section>
+
+<!-- 7. VALUATION -->
+<section class="major">
+  <h2>6 · Valuation &amp; Recommendation</h2>
+  <h3>Method — P/E de-rating on forward earnings</h3>
+  <p>The stock trades at ~83× trailing FY26 EPS of ₹22.58 (≈90× on reported EPS) — a multiple that assumes flawless multi-year execution. We assume defence-led growth + gradual CV recovery lifts FY27E EPS ~20% to ≈₹27.5. Applying a still-premium <strong>60× forward multiple</strong> (a partial de-rate, generously above auto peers, reflecting the defence/aerospace mix):</p>
+  <div class="callout" style="font-family:monospace;font-size:13px;">
+    Target = FY27E EPS ₹27.5 × 60×  =  <strong>₹1,650</strong><br>
+    Downside from CMP ₹2,049  =  <strong>−19.5%</strong>
+  </div>
+  <p class="muted">Even a bullish 70× on ₹27.5 implies only ₹1,925 (−6%); to justify today's price you must believe ~80×+ persists <em>and</em> earnings compound &gt;25%. The margin of safety is negative.</p>
+
+  <div class="rec-box">
+    <h3>Recommendation: SELL / REDUCE — Target ₹1,650 (12M)</h3>
+    <ul style="margin-bottom:0;">
+      <li><strong>Great company, expensive stock.</strong> The business quality and defence runway are real; the valuation has run well ahead of delivered earnings.</li>
+      <li>Trading near its 52-week high after roughly doubling — risk/reward is skewed to the downside.</li>
+      <li>Reported profit has been flat FY22→FY26 and Q4 FY26 PAT fell QoQ; the growth is in the narrative and order book, not yet in the P&amp;L.</li>
+      <li><strong>Action:</strong> existing holders book partial profits / trim on strength; new buyers wait for a meaningful pullback toward ₹1,600–1,700 or evidence of sustained 20%+ EPS growth.</li>
+    </ul>
+  </div>
+  <p class="muted"><strong>Note on external targets:</strong> Several published analyst targets (₹1,153; ₹1,345–1,545; bull ₹1,900) reference an earlier CMP of ~₹1,120 and predate the stock's run to ₹2,049 — treat them as stale. Our ₹1,650 is derived independently from current Screener fundamentals.</p>
+</section>
+
+<!-- 8. CONCLUSION -->
+<section>
+  <h2>7 · Conclusion</h2>
+  <p>Bharat Forge is among the highest-quality industrial franchises in India and its transition into defence and aerospace is structurally sound, well-managed and backed by a tangible order pipeline (₹425 Cr Navy contract, US Army MTC proposal, Eurosatory product launches). Operating margins have recovered to ~17–18% and domestic institutions are accumulating conviction-led. There is a genuine multi-year growth story here.</p>
+  <p>However, the share price has already capitalised most of that optimism. At ~83× earnings, 10.2× book and &lt;0.4% FCF yield — with reported profit essentially flat over four years and Q4 PAT declining sequentially — the valuation leaves no margin of safety and offers negative expected return on a 12-month horizon under any reasonable multiple. We rate the stock <strong>SELL / REDUCE</strong> with a target of <strong>₹1,650</strong>. This is a verdict on price, not on the company: we would turn constructive on a pullback or on hard evidence that defence/aerospace earnings are compounding fast enough to grow into the multiple.</p>
+</section>
+
+<!-- 9. MARKET CONTEXT -->
+<section>
+  <h2>8 · Market Context</h2>
+  <p>As of 19 Jun 2026 the <strong>Nifty Auto</strong> index traded around 26,583 (−0.6% on the day) and has <strong>underperformed</strong> over the past month (−3.6% vs Nifty 50 −2.7% to 11 Jun). FY26 closed strongly for autos (Q4 domestic volumes +24%, exports +23% post "GST 2.0"), and sentiment was aided by crude slipping below $90/bbl as Middle-East tensions eased. The backdrop is recovering but choppy — supportive for the auto-component core, but not a tailwind strong enough to defend a stretched single-stock multiple.</p>
+</section>
+
+<div class="foot">
+  <strong>For educational / informational purposes only. This is NOT investment advice.</strong> Do your own research and consult a SEBI-registered adviser before transacting.<br><br>
+  <strong>Data sources:</strong> Screener.in (consolidated financials, ratios, shareholding, corporate filings); BSE corporate announcements; company earnings updates (MarketsMojo, ScanX); analyst-consensus context (MarketScreener, Business Standard, Univest, TradingView); index context (Business Standard, NSE/Kotak). Fundamentals as of last close 19 Jun 2026 (FY26 ended 31 Mar 2026).<br>
+  <strong>Generated:</strong> 22 Jun 2026 · stock-analysis skill.
+</div>
+
+</div>
+</body>
+</html>
