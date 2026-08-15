@@ -83,3 +83,37 @@ Write it to `/tmp/<SYMBOL>_report.html` (and cache it per step 2).
 - Never fabricate numbers. Missing data → "Data unavailable". Always end the
   report with the not-investment-advice disclaimer.
 - Strip `₹ , % Cr.` before any math on Screener strings (Indian number format).
+
+## Field notes (verified 2026-08-14, BOSCHLTD + SOLARINDS)
+
+**Scope boundary — this skill does NOT do price prediction.** It is a
+fundamentals/valuation report generator. Requests for *intraday range*, *today's
+price band*, *volatility forecast*, or *"predict the price"* need a separate
+quant path (below); do not try to answer them from Screener data.
+
+**Free OHLCV for NSE without any API key** — Yahoo chart API works and is
+survey-verified against Trendlyne/Value Research:
+`https://query1.finance.yahoo.com/v8/finance/chart/<SYM>.NS?range=5y&interval=1d`
+(send a browser `User-Agent` or it 403s). Gotchas found in the wild:
+- `interval=15m` with `range=3mo` → **HTTP 422**. 15m/30m cap at 60d; 5m caps at 1mo.
+- `meta.chartPreviousClose` is the close *before the requested range starts*, NOT
+  yesterday's close. Do not use it as prev-close.
+- Daily bars can lag the latest session by a day on thin counters (Bosch). Rebuild
+  the missing session by aggregating the 5m series — verified accurate to ₹10
+  (0.02%) on a ₹46,750 stock. Low-liquidity names may have no 5m prints after
+  ~15:10 even though NSE closes 15:30.
+- Indices: `^NSEI` (Nifty 50), `^CNXAUTO`. Index *daily* series can go stale for
+  weeks while the 5m series stays fresh — check before using.
+
+**macOS: `timeout` is not installed.** `timeout 180 python3 …` fails with
+`command not found`. Use the Bash tool's own `timeout` parameter instead.
+
+**If asked for an intraday band, the calibrated recipe that worked:**
+filtered historical simulation — forecast σ, standardise `U=H/C₋₁−1` and
+`D=L/C₋₁−1` by it (this puts overnight gap risk *inside* the target), then take
+empirical quantiles of the standardised series. Model rule
+`σ = MAX(median-ensemble, GARCH(1,1))`. Critically: **test conditional coverage,
+not just average coverage** — the plain ensemble hit 79-80% on all days but only
+71.6% on post-shock days, i.e. it silently under-covers exactly when it matters.
+Always report the realised hit-rate for the state the stock is in *today*, with a
+binomial standard error. Never tune the band to hit a target number.
