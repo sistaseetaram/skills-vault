@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1789751424247,
+  "lastUpdated": 1790033660764,
   "skills": [
     {
       "skillId": "web-artifacts-builder",
@@ -26,8 +26,9 @@
       "skillId": "skill_0124CMxfktHyTbCuawJxktyW",
       "name": "excalidraw-diagram",
       "description": "Use when someone asks to draw a diagram, make an Excalidraw diagram, or build an editable diagram. Default for all diagram requests.",
-      "source": "custom",
-      "updatedAt": "2026-05-17T11:20:58.868559Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-17T11:20:58.868428Z",
+      "backingPluginId": "plugin_01BnEdTK3YsYcm7df9JomcnT"
     },
     {
       "skillId": "docs",
@@ -54,8 +55,9 @@
       "skillId": "skill_0126dSJJyWMNbwttJy95oJ2Z",
       "name": "banana-pro-director",
       "description": "Higgsfield image prompt director covering Banana Pro, Soul Cinema, and GPT-2. Three asset types in strict order: (1) single-image character outfit on white seamless studio — the locked base reference, via Banana Pro (custom styling from prompt) or Soul Cinema (face/body from character ref + outfit from wardrobe ref), (2) 6-panel multi-angle character sheet off that base, (3) scene plates with or without characters in cinematic environments. Also GPT-2 for detail face/chest-up portraits. Reads reference images for hair, makeup, wardrobe, jewelry, identity markers. Outputs photorealistic prompts with locked hyperreal stack — skin pores, subsurface scattering, strand-by-strand hair, fabric weave, Kodak Vision3 film. Use for any character outfit reference, character sheet, model sheet, ref sheet, multi-angle sheet, scene plate, environment plate, face detail shot, or photorealistic still — even without saying 'Banana Pro,' 'Nano Banana,' or 'Soul Cinema.'",
-      "source": "custom",
-      "updatedAt": "2026-05-26T13:25:08.042722Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-26T13:25:08.042568Z",
+      "backingPluginId": "plugin_01VTgvRh684RbHnjgBwP5CoU"
     },
     {
       "skillId": "skill_018L9DMemspZBHNNmewczfju",
