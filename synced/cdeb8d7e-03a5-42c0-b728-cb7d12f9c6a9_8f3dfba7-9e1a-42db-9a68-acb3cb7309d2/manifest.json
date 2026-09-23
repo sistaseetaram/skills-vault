@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1790033660764,
+  "lastUpdated": 1790125314058,
   "skills": [
     {
       "skillId": "web-artifacts-builder",
@@ -63,8 +63,9 @@
       "skillId": "skill_018L9DMemspZBHNNmewczfju",
       "name": "cinema-worldbuilder",
       "description": "Universal cinema worldbuilding director for Seedance video prompts. Reads uploaded reference images for wardrobe, hair, makeup, identity markers, and environment, then composes production-ready Seedance prompts using a locked cinematography grammar — five cinema modes (Narrative, Studio, Action, Performance, Atmospheric), each with canonical camera/lens/movement/filtration/grade specs, plus diegetic audio design (footsteps, fabric, breath, room tone, weapon fire, crowd, weather — never music or lyrics). Use this skill whenever the user wants to create a Seedance video prompt, mentions Seedance, asks for a cinematic scene breakdown, uploads reference images for a scene they want to build, describes a scene for video generation, or asks for shot prompts for music videos, action sequences, performance scenes, narrative shorts, fashion films, or atmospheric environment plates — even if they don't explicitly say 'cinematic' or name a mode.",
-      "source": "custom",
-      "updatedAt": "2026-05-26T13:25:26.312751Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-26T13:25:26.312588Z",
+      "backingPluginId": "plugin_01VJxUo7f47s5q91fJNpecny"
     },
     {
       "skillId": "skill_01EsQuu5DuT5YginR5pU922p",
@@ -92,7 +93,7 @@
       "name": "pptx",
       "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint (.pptx) files; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email, summary, or creating a different type of slide deck); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user asks for a PowerPoint or .pptx file, or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. However, when the user asks for a deck, slides, a slide deck, or a presentation without naming a file format, default to using a dedicated slide-deck artifact type or a separate slides skill if this session offers one; otherwise, use this skill.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.306681Z"
+      "updatedAt": "2026-09-22T18:00:37.886566Z"
     },
     {
       "skillId": "pdf",
