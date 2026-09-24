@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1790125314058,
+  "lastUpdated": 1790136729905,
   "skills": [
     {
       "skillId": "web-artifacts-builder",
@@ -48,8 +48,9 @@
       "skillId": "skill_018rfzYJgUmMHcELyRYPYBKZ",
       "name": "supergrow-mcp",
       "description": "Use this skill whenever a user wants to do anything with Supergrow — creating LinkedIn posts, scheduling content, checking their calendar, managing drafts, scoring posts, Content DNA, analytics, knowledge base, or managing multiple workspaces as an admin. Triggers: \"create a post\", \"draft a post\", \"schedule content\", \"what's on my calendar\", \"score this post\", \"check my drafts\", \"publish to LinkedIn\", \"content DNA\", \"writing style\", \"turn this into a post\", \"queue this\", \"my Supergrow workspace\", \"what's performing\", \"weekly report\", \"analytics\", \"knowledge base\", \"save this to my brain\", \"all my clients\", \"all workspaces\", \"aggregated report\", \"pipeline health\", or any LinkedIn content request. This skill ensures Claude follows the correct tool call sequence and never guesses the order.",
-      "source": "custom",
-      "updatedAt": "2026-05-14T07:44:23.476830Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-14T07:44:23.476725Z",
+      "backingPluginId": "plugin_01NzxiEuLa3pat87L9z1MnU7"
     },
     {
       "skillId": "skill_0126dSJJyWMNbwttJy95oJ2Z",
@@ -105,9 +106,9 @@
     {
       "skillId": "docx",
       "name": "docx",
-      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.279708Z"
+      "updatedAt": "2026-09-23T04:00:28.352014Z"
     },
     {
       "skillId": "xlsx",
