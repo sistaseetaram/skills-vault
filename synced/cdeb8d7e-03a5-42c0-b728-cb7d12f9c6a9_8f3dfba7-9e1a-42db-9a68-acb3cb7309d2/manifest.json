@@ -31,8 +31,8 @@
       "description": "Use when someone asks to draw a diagram, make an Excalidraw diagram, or build an editable diagram. Default for all diagram requests.",
       "source": "plugin",
       "updatedAt": "2026-05-17T11:20:58.868428Z",
-      "backingPluginId": "plugin_01BnEdTK3YsYcm7df9JomcnT",
-      "creatorType": "user"
+      "creatorType": "user",
+      "backingPluginId": "plugin_01BnEdTK3YsYcm7df9JomcnT"
     },
     {
       "skillId": "docs",
@@ -56,8 +56,8 @@
       "description": "Use this skill whenever a user wants to do anything with Supergrow — creating LinkedIn posts, scheduling content, checking their calendar, managing drafts, scoring posts, Content DNA, analytics, knowledge base, or managing multiple workspaces as an admin. Triggers: \"create a post\", \"draft a post\", \"schedule content\", \"what's on my calendar\", \"score this post\", \"check my drafts\", \"publish to LinkedIn\", \"content DNA\", \"writing style\", \"turn this into a post\", \"queue this\", \"my Supergrow workspace\", \"what's performing\", \"weekly report\", \"analytics\", \"knowledge base\", \"save this to my brain\", \"all my clients\", \"all workspaces\", \"aggregated report\", \"pipeline health\", or any LinkedIn content request. This skill ensures Claude follows the correct tool call sequence and never guesses the order.",
       "source": "plugin",
       "updatedAt": "2026-05-14T07:44:23.476725Z",
-      "backingPluginId": "plugin_01NzxiEuLa3pat87L9z1MnU7",
-      "creatorType": "user"
+      "creatorType": "user",
+      "backingPluginId": "plugin_01NzxiEuLa3pat87L9z1MnU7"
     },
     {
       "skillId": "skill_0126dSJJyWMNbwttJy95oJ2Z",
@@ -65,8 +65,8 @@
       "description": "Higgsfield image prompt director covering Banana Pro, Soul Cinema, and GPT-2. Three asset types in strict order: (1) single-image character outfit on white seamless studio — the locked base reference, via Banana Pro (custom styling from prompt) or Soul Cinema (face/body from character ref + outfit from wardrobe ref), (2) 6-panel multi-angle character sheet off that base, (3) scene plates with or without characters in cinematic environments. Also GPT-2 for detail face/chest-up portraits. Reads reference images for hair, makeup, wardrobe, jewelry, identity markers. Outputs photorealistic prompts with locked hyperreal stack — skin pores, subsurface scattering, strand-by-strand hair, fabric weave, Kodak Vision3 film. Use for any character outfit reference, character sheet, model sheet, ref sheet, multi-angle sheet, scene plate, environment plate, face detail shot, or photorealistic still — even without saying 'Banana Pro,' 'Nano Banana,' or 'Soul Cinema.'",
       "source": "plugin",
       "updatedAt": "2026-05-26T13:25:08.042568Z",
-      "backingPluginId": "plugin_01VTgvRh684RbHnjgBwP5CoU",
-      "creatorType": "user"
+      "creatorType": "user",
+      "backingPluginId": "plugin_01VTgvRh684RbHnjgBwP5CoU"
     },
     {
       "skillId": "skill_018L9DMemspZBHNNmewczfju",
@@ -74,8 +74,8 @@
       "description": "Universal cinema worldbuilding director for Seedance video prompts. Reads uploaded reference images for wardrobe, hair, makeup, identity markers, and environment, then composes production-ready Seedance prompts using a locked cinematography grammar — five cinema modes (Narrative, Studio, Action, Performance, Atmospheric), each with canonical camera/lens/movement/filtration/grade specs, plus diegetic audio design (footsteps, fabric, breath, room tone, weapon fire, crowd, weather — never music or lyrics). Use this skill whenever the user wants to create a Seedance video prompt, mentions Seedance, asks for a cinematic scene breakdown, uploads reference images for a scene they want to build, describes a scene for video generation, or asks for shot prompts for music videos, action sequences, performance scenes, narrative shorts, fashion films, or atmospheric environment plates — even if they don't explicitly say 'cinematic' or name a mode.",
       "source": "plugin",
       "updatedAt": "2026-05-26T13:25:26.312588Z",
-      "backingPluginId": "plugin_01VJxUo7f47s5q91fJNpecny",
-      "creatorType": "user"
+      "creatorType": "user",
+      "backingPluginId": "plugin_01VJxUo7f47s5q91fJNpecny"
     },
     {
       "skillId": "skill_01EsQuu5DuT5YginR5pU922p",
@@ -83,8 +83,8 @@
       "description": "Interview the user relentlessly about a plan, design, or topic, checkpointing every answer to a brainstorm file so nothing is lost. Use when the user wants to stress-test a plan, get grilled on a design, run a brainstorm or discovery session, extract what's in their head into a doc, or says \"grill me\".",
       "source": "plugin",
       "updatedAt": "2026-06-05T12:27:12.134391Z",
-      "backingPluginId": "plugin_01WXngW5gkJn2UyiYZHMc1yg",
-      "creatorType": "user"
+      "creatorType": "user",
+      "backingPluginId": "plugin_01WXngW5gkJn2UyiYZHMc1yg"
     },
     {
       "skillId": "morning",
@@ -147,7 +147,8 @@
       "name": "google-workspace",
       "description": "Read this before the first Google Drive, Docs, Sheets or Slides connector call whenever the task creates or changes a Google file. Use this skill whenever the user wants to create or change a Google Doc, Sheet or Slides file in their Google Drive. Triggers include: a request that names Google Docs, Sheets, Slides or Drive and asks to make, edit, format, copy or rename a file; a docs.google.com link with a request to change that file, even a one-line fix or suggested edits; and any follow-up change to a Google file from earlier in the chat, even \"change it\" or \"add a tab\". Includes helper scripts for document positions, cell ranges and slide layout. However, if the user asks for a doc, deck or spreadsheet without naming Google, or gives a Google file only as source material for something new, use Claude's own output type instead. Do NOT use for read-only questions about a Google file, or for Word, Excel, PowerPoint or PDF files.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-23T19:50:41.402985Z"
+      "updatedAt": "2026-09-23T19:50:41.402985Z",
+      "creatorType": "anthropic"
     }
   ]
 }
