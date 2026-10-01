@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1790387587691,
+  "lastUpdated": 1790771668048,
   "skills": [
     {
       "skillId": "web-artifacts-builder",
@@ -31,16 +31,15 @@
       "description": "Use when someone asks to draw a diagram, make an Excalidraw diagram, or build an editable diagram. Default for all diagram requests.",
       "source": "plugin",
       "updatedAt": "2026-05-17T11:20:58.868428Z",
-      "creatorType": "user",
-      "backingPluginId": "plugin_01BnEdTK3YsYcm7df9JomcnT"
+      "backingPluginId": "plugin_01BnEdTK3YsYcm7df9JomcnT",
+      "creatorType": "user"
     },
     {
       "skillId": "docs",
       "name": "docs",
-      "description": "docs (living docs people share, comment on and edit; use only when the user asks for one: names a doc, document, page, memo, spec, PRD, runbook or write-up, asks for somewhere to share or keep editing something, or says yes to your doc offer; a plan, comparison, summary or notes asked in chat stays in chat (at most a one-line doc offer); a report, status update, recap or \"something I can send them\" with no form named → ask first: reply, doc or file?; tabs hold tables and live charts too; a pasted claude.ai/code/artifact/… link may be a doc: check with docs tools first; not HTML pages, apps or plain chat answers; a .docx/.pptx/.xlsx/PDF asked for by name → that format's skill): asked for one → no docs-connector instructions in context? call the docs connector's `guide` with topic.instructions first, then create the doc (headings only, no body) before any search, file read or plan, even with files attached. Documenting code means docstrings or repo docs, not a doc.",
+      "description": "docs (editable docs people share and comment on; the default for any document, named as a doc or not: a document, report, proposal, resume, cover letter, letter, contract, policy, form, template, worksheet, essay, handbook, guide, how-to, cheat sheet, SOP or other writing to keep, share, collaborate on, send, submit, print or sign; a doc exports to Word, PDF, Markdown or Google Docs, so needing a file to send, attach, upload, submit or print is no reason to pick Word, and a file nobody asked for is a doc, not Word; a plan, comparison, summary or notes asked in chat stays in chat; a pasted claude.ai artifact link may be a doc: check with docs tools first; Word or another file format named, tracked changes wanted, or a .docx to change or use as a template → that format's skill): making one → if no docs-connector instructions are in context, call its `guide` (topic.instructions) first; then create the doc (headings only, no body) before any search, file read or plan, even with files attached.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-16T00:10:45.680014Z",
-      "creatorType": "anthropic"
+      "updatedAt": "2026-09-30T00:33:27.599727Z"
     },
     {
       "skillId": "skill-creator",
@@ -56,8 +55,8 @@
       "description": "Use this skill whenever a user wants to do anything with Supergrow — creating LinkedIn posts, scheduling content, checking their calendar, managing drafts, scoring posts, Content DNA, analytics, knowledge base, or managing multiple workspaces as an admin. Triggers: \"create a post\", \"draft a post\", \"schedule content\", \"what's on my calendar\", \"score this post\", \"check my drafts\", \"publish to LinkedIn\", \"content DNA\", \"writing style\", \"turn this into a post\", \"queue this\", \"my Supergrow workspace\", \"what's performing\", \"weekly report\", \"analytics\", \"knowledge base\", \"save this to my brain\", \"all my clients\", \"all workspaces\", \"aggregated report\", \"pipeline health\", or any LinkedIn content request. This skill ensures Claude follows the correct tool call sequence and never guesses the order.",
       "source": "plugin",
       "updatedAt": "2026-05-14T07:44:23.476725Z",
-      "creatorType": "user",
-      "backingPluginId": "plugin_01NzxiEuLa3pat87L9z1MnU7"
+      "backingPluginId": "plugin_01NzxiEuLa3pat87L9z1MnU7",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_0126dSJJyWMNbwttJy95oJ2Z",
@@ -65,8 +64,8 @@
       "description": "Higgsfield image prompt director covering Banana Pro, Soul Cinema, and GPT-2. Three asset types in strict order: (1) single-image character outfit on white seamless studio — the locked base reference, via Banana Pro (custom styling from prompt) or Soul Cinema (face/body from character ref + outfit from wardrobe ref), (2) 6-panel multi-angle character sheet off that base, (3) scene plates with or without characters in cinematic environments. Also GPT-2 for detail face/chest-up portraits. Reads reference images for hair, makeup, wardrobe, jewelry, identity markers. Outputs photorealistic prompts with locked hyperreal stack — skin pores, subsurface scattering, strand-by-strand hair, fabric weave, Kodak Vision3 film. Use for any character outfit reference, character sheet, model sheet, ref sheet, multi-angle sheet, scene plate, environment plate, face detail shot, or photorealistic still — even without saying 'Banana Pro,' 'Nano Banana,' or 'Soul Cinema.'",
       "source": "plugin",
       "updatedAt": "2026-05-26T13:25:08.042568Z",
-      "creatorType": "user",
-      "backingPluginId": "plugin_01VTgvRh684RbHnjgBwP5CoU"
+      "backingPluginId": "plugin_01VTgvRh684RbHnjgBwP5CoU",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_018L9DMemspZBHNNmewczfju",
@@ -74,8 +73,8 @@
       "description": "Universal cinema worldbuilding director for Seedance video prompts. Reads uploaded reference images for wardrobe, hair, makeup, identity markers, and environment, then composes production-ready Seedance prompts using a locked cinematography grammar — five cinema modes (Narrative, Studio, Action, Performance, Atmospheric), each with canonical camera/lens/movement/filtration/grade specs, plus diegetic audio design (footsteps, fabric, breath, room tone, weapon fire, crowd, weather — never music or lyrics). Use this skill whenever the user wants to create a Seedance video prompt, mentions Seedance, asks for a cinematic scene breakdown, uploads reference images for a scene they want to build, describes a scene for video generation, or asks for shot prompts for music videos, action sequences, performance scenes, narrative shorts, fashion films, or atmospheric environment plates — even if they don't explicitly say 'cinematic' or name a mode.",
       "source": "plugin",
       "updatedAt": "2026-05-26T13:25:26.312588Z",
-      "creatorType": "user",
-      "backingPluginId": "plugin_01VJxUo7f47s5q91fJNpecny"
+      "backingPluginId": "plugin_01VJxUo7f47s5q91fJNpecny",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01EsQuu5DuT5YginR5pU922p",
@@ -83,8 +82,8 @@
       "description": "Interview the user relentlessly about a plan, design, or topic, checkpointing every answer to a brainstorm file so nothing is lost. Use when the user wants to stress-test a plan, get grilled on a design, run a brainstorm or discovery session, extract what's in their head into a doc, or says \"grill me\".",
       "source": "plugin",
       "updatedAt": "2026-06-05T12:27:12.134391Z",
-      "creatorType": "user",
-      "backingPluginId": "plugin_01WXngW5gkJn2UyiYZHMc1yg"
+      "backingPluginId": "plugin_01WXngW5gkJn2UyiYZHMc1yg",
+      "creatorType": "user"
     },
     {
       "skillId": "morning",
@@ -123,8 +122,7 @@
       "name": "docx",
       "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
       "source": "anthropic",
-      "updatedAt": "2026-09-23T04:00:28.352014Z",
-      "creatorType": "anthropic"
+      "updatedAt": "2026-09-30T02:00:31.677168Z"
     },
     {
       "skillId": "xlsx",
